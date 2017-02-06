@@ -87,7 +87,7 @@
 		_reactDom2.default.render(_react2.default.createElement(_AppRoutes2.default, null), document.getElementById('guitar-app'));
 	});
 
-	console.log('hello Travis');
+	console.log('hello jerkoff');
 
 /***/ },
 /* 1 */
@@ -671,7 +671,7 @@
 
 /***/ },
 /* 6 */
-[237, 7],
+[240, 7],
 /* 7 */
 /***/ function(module, exports) {
 
@@ -6383,7 +6383,7 @@
 
 /***/ },
 /* 50 */
-[237, 35],
+[240, 35],
 /* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21089,7 +21089,7 @@
 
 	var _Home2 = _interopRequireDefault(_Home);
 
-	var _Guitar = __webpack_require__(236);
+	var _Guitar = __webpack_require__(238);
 
 	var _Guitar2 = _interopRequireDefault(_Guitar);
 
@@ -21100,6 +21100,9 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	console.log(_Home2.default);
+	console.log(_Guitar2.default);
 
 	var AppRoutes = function (_React$Component) {
 		_inherits(AppRoutes, _React$Component);
@@ -26216,7 +26219,7 @@
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -26227,6 +26230,14 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _GuitarPreview = __webpack_require__(236);
+
+	var _GuitarPreview2 = _interopRequireDefault(_GuitarPreview);
+
+	var _guitars = __webpack_require__(237);
+
+	var _guitars2 = _interopRequireDefault(_guitars);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26246,13 +26257,18 @@
 		}
 
 		_createClass(Home, [{
-			key: "render",
+			key: 'render',
 			value: function render() {
-
 				return _react2.default.createElement(
-					"div",
-					{ className: "row" },
-					"more default fuckery from the Home component"
+					'div',
+					{ className: 'row' },
+					_guitars2.default.map(function (g) {
+						return _react2.default.createElement(
+							'div',
+							{ key: g.id, className: 'col-md-3' },
+							_react2.default.createElement(_GuitarPreview2.default, g)
+						);
+					})
 				);
 			}
 		}]);
@@ -26266,7 +26282,249 @@
 /* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(179);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var GuitarPreview = function (_React$Component) {
+		_inherits(GuitarPreview, _React$Component);
+
+		function GuitarPreview() {
+			_classCallCheck(this, GuitarPreview);
+
+			return _possibleConstructorReturn(this, (GuitarPreview.__proto__ || Object.getPrototypeOf(GuitarPreview)).apply(this, arguments));
+		}
+
+		_createClass(GuitarPreview, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'guitar-preview' },
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: "/guitar/" + this.props.id },
+						_react2.default.createElement(
+							'h3',
+							null,
+							this.props.manufacturer,
+							' ',
+							_react2.default.createElement(
+								'small',
+								null,
+								this.props.name
+							)
+						),
+						_react2.default.createElement('img', {
+							className: 'img-responsive',
+							src: "img/" + this.props.image })
+					)
+				);
+			}
+		}]);
+
+		return GuitarPreview;
+	}(_react2.default.Component);
+
+	exports.default = GuitarPreview;
+
+/***/ },
+/* 237 */
+/***/ function(module, exports) {
+
 	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var guitars = [{
+	    id: 1,
+	    name: "Stratocaster",
+	    manufacturer: "Fender",
+	    year: 2012,
+	    neck: "Maple",
+	    fingerboard: "Rosewood",
+	    frets: 22,
+	    image: "fender-strat.jpg"
+	}, {
+	    id: 2,
+	    name: "Les Paul Studio",
+	    manufacturer: "Gibson",
+	    year: 2012,
+	    neck: "Mahogany",
+	    fingerboard: "Rosewood",
+	    frets: 22,
+	    image: "gibson-les-paul-studio.jpg"
+	}, {
+	    id: 3,
+	    name: "Talman",
+	    manufacturer: "Ibanez",
+	    year: 1996,
+	    neck: "Maple",
+	    fingerboard: "Rosewood",
+	    frets: 22,
+	    image: "ibanez-talman.jpg"
+	}, {
+	    id: 4,
+	    name: "Custom 24 SE",
+	    manufacturer: "PRS",
+	    year: 2014,
+	    neck: "Mahogany",
+	    fingerboard: "Rosewood",
+	    frets: 24,
+	    image: "prs-se-custom-24.jpg"
+	}];
+
+	exports.default = guitars;
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _NotFound = __webpack_require__(239);
+
+	var _NotFound2 = _interopRequireDefault(_NotFound);
+
+	var _guitars = __webpack_require__(237);
+
+	var _guitars2 = _interopRequireDefault(_guitars);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Guitar = function (_React$Component) {
+	    _inherits(Guitar, _React$Component);
+
+	    function Guitar() {
+	        _classCallCheck(this, Guitar);
+
+	        return _possibleConstructorReturn(this, (Guitar.__proto__ || Object.getPrototypeOf(Guitar)).apply(this, arguments));
+	    }
+
+	    _createClass(Guitar, [{
+	        key: "render",
+	        value: function render() {
+	            var id = this.props.params.guitarId;
+	            var guitar = _guitars2.default.find(function (g) {
+	                return g.id == id;
+	            });
+
+	            if (!guitar) {
+	                return _react2.default.createElement(_NotFound2.default, null);
+	            }
+
+	            return _react2.default.createElement(
+	                "div",
+	                { className: "container" },
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "row" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-lg-12" },
+	                        _react2.default.createElement(
+	                            "h1",
+	                            null,
+	                            guitar.manufacturer,
+	                            " ",
+	                            guitar.name
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "div",
+	                    { className: "row" },
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-md-6" },
+	                        _react2.default.createElement("img", { className: "img-responsive", src: "../img/" + guitar.image })
+	                    ),
+	                    _react2.default.createElement(
+	                        "div",
+	                        { className: "col-md-6" },
+	                        _react2.default.createElement(
+	                            "h3",
+	                            null,
+	                            "Description"
+	                        ),
+	                        _react2.default.createElement(
+	                            "ul",
+	                            null,
+	                            _react2.default.createElement(
+	                                "li",
+	                                null,
+	                                "Year: ",
+	                                guitar.year
+	                            ),
+	                            _react2.default.createElement(
+	                                "li",
+	                                null,
+	                                "Neck: ",
+	                                guitar.neck
+	                            ),
+	                            _react2.default.createElement(
+	                                "li",
+	                                null,
+	                                "Fingerboard: D"
+	                            ),
+	                            _react2.default.createElement(
+	                                "li",
+	                                null,
+	                                "Frets: ",
+	                                guitar.frets
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Guitar;
+	}(_react2.default.Component);
+
+	exports.default = Guitar;
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -26286,34 +26544,33 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Guitar = function (_React$Component) {
-		_inherits(Guitar, _React$Component);
+	var NotFound = function (_React$Component) {
+		_inherits(NotFound, _React$Component);
 
-		function Guitar() {
-			_classCallCheck(this, Guitar);
+		function NotFound() {
+			_classCallCheck(this, NotFound);
 
-			return _possibleConstructorReturn(this, (Guitar.__proto__ || Object.getPrototypeOf(Guitar)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
 		}
 
-		_createClass(Guitar, [{
-			key: "render",
+		_createClass(NotFound, [{
+			key: 'render',
 			value: function render() {
-
 				return _react2.default.createElement(
-					"div",
-					{ className: "container" },
-					"default bullshit from the Guitar component"
+					'h1',
+					null,
+					'Sorry, I\'m afraid I can\'t find that for you'
 				);
 			}
 		}]);
 
-		return Guitar;
+		return NotFound;
 	}(_react2.default.Component);
 
-	exports.default = Guitar;
+	exports.default = NotFound;
 
 /***/ },
-/* 237 */
+/* 240 */
 /***/ function(module, exports, __webpack_require__, __webpack_module_template_argument_0__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**

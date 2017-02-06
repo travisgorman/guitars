@@ -1,15 +1,38 @@
-import React from 'react'
+import React from "react";
+import NotFound from "./NotFound";
+import guitars from "../../data/guitars";
 
 export default class Guitar extends React.Component {
+    render() {
+        const id = this.props.params.guitarId;
+        const guitar = guitars.find((g) => g.id == id);
 
-	render() {
+        if (!guitar) {
+            return <NotFound />
+        }
 
-		return (
-			<div className="container">
-				default bullshit from the Guitar component
-			</div>
-		  
-		);
-	}
-	
+        return (
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-12">
+                        <h1>{guitar.manufacturer} {guitar.name}</h1>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-6">
+                        <img className="img-responsive" src={"../img/" + guitar.image} />
+                    </div>
+                    <div className="col-md-6">
+                        <h3>Description</h3>
+                        <ul>
+                            <li>Year: {guitar.year}</li>
+                            <li>Neck: {guitar.neck}</li>
+                            <li>Fingerboard: D</li>
+                            <li>Frets: {guitar.frets}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 }
